@@ -25,6 +25,19 @@ Từ file **ARRAY06.INP** gồm
 ### Output
 Ghi ra file **ARRAY06.OUT** mảng sau khi xóa
 
+### Sample input
+```
+5
+10
+1 2 3 4 5 6 7 8 9 10
+3 5
+```
+
+### Sample output
+```
+1 2 3 9 10
+```
+
 ### Subtask
 - $50\%$ số test có $N \le 1000$
 - $50\%$ số test còn lại không có điều kiện gì thêm
