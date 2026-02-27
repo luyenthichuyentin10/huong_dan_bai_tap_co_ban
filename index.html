@@ -90,7 +90,22 @@
                     
                     // Highlight code
                     renderArea.querySelectorAll('pre code').forEach((el) => {
-                        hljs.highlightElement(el);
+                        // Chỉ highlight nếu block code có khai báo ngôn ngữ (ví dụ: ```cpp)
+                        // Hoặc nếu nội dung có dấu hiệu của mã nguồn (chứa dấu ngoặc, từ khóa...)
+                        const isCpp = el.classList.contains('language-cpp') || el.classList.contains('cpp');
+                        const isPseudocode = el.classList.contains('pseudocode');
+
+                        if (isCpp) {
+                            hljs.highlightElement(el);
+                        } else if (isPseudocode) {
+                            // Không gọi hljs cho mã giả để tránh lỗi 'undefined'
+                            // Mã giả sẽ được bôi màu bằng logic riêng của thầy (nếu có)
+                            el.classList.add('hljs'); // Giữ style nền tối
+                        } else {
+                            // Với các số liệu Test case, ta giữ nguyên style nhưng không highlight
+                            el.classList.add('hljs'); 
+                            el.style.color = "#e9ebee"; // Màu chữ sáng mặc định
+                        }
                     });
 
                     // MathJax
@@ -99,7 +114,22 @@
 
                 // 4. Highlight code (Sử dụng cấu trúc ổn định của bạn)
                 renderArea.querySelectorAll('pre code').forEach((el) => { 
-                    hljs.highlightElement(el); 
+                    // Chỉ highlight nếu block code có khai báo ngôn ngữ (ví dụ: ```cpp)
+                    // Hoặc nếu nội dung có dấu hiệu của mã nguồn (chứa dấu ngoặc, từ khóa...)
+                    const isCpp = el.classList.contains('language-cpp') || el.classList.contains('cpp');
+                    const isPseudocode = el.classList.contains('pseudocode');
+
+                    if (isCpp) {
+                        hljs.highlightElement(el);
+                    } else if (isPseudocode) {
+                        // Không gọi hljs cho mã giả để tránh lỗi 'undefined'
+                        // Mã giả sẽ được bôi màu bằng logic riêng của thầy (nếu có)
+                        el.classList.add('hljs'); // Giữ style nền tối
+                    } else {
+                        // Với các số liệu Test case, ta giữ nguyên style nhưng không highlight
+                        el.classList.add('hljs'); 
+                        el.style.color = "#e9ebee"; // Màu chữ sáng mặc định
+                    } 
                 });
 
                 // 5. BỔ SUNG: Kích hoạt MathJax để vẽ công thức toán học
