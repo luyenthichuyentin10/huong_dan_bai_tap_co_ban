@@ -85,10 +85,42 @@ Vì mảng chưa được sắp xếp, cách đơn giản nhất là chúng ta d
 
 **Độ phức tạp:** $O(N)$ vì trong trường hợp xấu nhất ta phải kiểm tra toàn bộ $N$ phần tử.
 
-**Mã giả thuật toán**
+***Trong lập trình thi đấu, ta thường đứng trước 2 sự lựa chọn tùy vào giới hạn của đề bài:***
+
+### 💾 Phương án 1: Tối ưu bộ nhớ (Duyệt 2 lần)
+* **Cách làm:** 
+    * Lần 1: Duyệt mảng để đếm xem có bao nhiêu số $X$.
+    * Lần 2: Duyệt lại mảng từ đầu, hễ gặp $X$ thì xuất vị trí ngay lập tức.
+* **Ưu điểm:** Tiết kiệm bộ nhớ vì chỉ dùng duy nhất 1 mảng $A$.
+* **Nhược điểm:** Tốn thời gian hơn vì phải đi qua mảng 2 lần ($2 \times N$ phép tính).
+
+**Mã giả thuật toán tối ưu bộ nhớ**
+<pre class="pseudocode">
+<span class="kw">HÀM</span> <span class="fn">TimPhanTu_ToiUuBoNho</span>(<span class="var">A</span>[], <span class="var">n</span>, <span class="var">X</span>):
+    <span class="var">count</span> = 0
+    <span class="com">// LẦN 1: Duyệt mảng để đếm số lượng X</span>
+    <span class="kw">CHO</span> <span class="var">i</span> chạy từ 0 đến <span class="var">n</span> - 1:
+        <span class="kw">NẾU</span> <span class="var">A</span>[<span class="var">i</span>] == <span class="var">X</span> <span class="kw">THÌ</span>:
+            <span class="var">count</span> = <span class="var">count</span> + 1
+    <span class="com">// Kiểm tra nếu không tìm thấy</span>
+    <span class="kw">NẾU</span> <span class="var">count</span> == 0 <span class="kw">THÌ</span>:
+        Xuất "No"
+    <span class="kw">NGƯỢC LẠI</span>:
+        <span class="com">// LẦN 2: Duyệt lại từ đầu để xuất các vị trí i</span>
+        Xuất <span class="var">count</span>
+        <span class="kw">CHO</span> <span class="var">i</span> chạy từ 0 đến <span class="var">n</span> - 1:
+            <span class="kw">NẾU</span> <span class="var">A</span>[<span class="var">i</span>] == <span class="var">X</span> <span class="kw">THÌ</span>:
+                Xuất <span class="var">i</span>
+</pre>
+
+### 🚀 Phương án 2: Tối ưu tốc độ (Dùng mảng phụ)
+* **Cách làm:** Duyệt mảng đúng 1 lần duy nhất. Nếu gặp $X$ thì vừa tăng biến đếm, vừa lưu vị trí vào một mảng phụ (mảng `viTri`).
+* **Ưu điểm:** Chạy cực nhanh vì chỉ duyệt mảng đúng 1 lần ($1 \times N$ phép tính).
+* **Nhược điểm:** Tốn thêm bộ nhớ để lưu trữ mảng `viTri`
+
+**Mã giả thuật toán tối ưu tốc độ**
 <pre class="pseudocode">
 <span class="var">viTri</span> = [] <span class="com">// Mảng lưu các vị trí tìm thấy</span>
-
 <span class="kw">HÀM</span> <span class="fn">TimPhanTu</span>(<span class="var">A</span>[], <span class="var">n</span>, <span class="var">X</span>):
     <span class="var">count</span> = <span class="val">0</span>
     <span class="kw">CHO</span> <span class="var">i</span> chạy từ <span class="val">0</span> đến <span class="var">n</span> - <span class="val">1</span>:
@@ -100,6 +132,48 @@ Vì mảng chưa được sắp xếp, cách đơn giản nhất là chúng ta d
         Xuất <span class="var">viTri</span>
     <span class="kw">NGƯỢC LẠI</span>:
         Xuất <span class="val">"No"</span>
-</pre>
+</pre> 
+</div>
 
+<div class="step-card border-green">
+    <div class="step-badge bg-green">So sánh chiến thuật lập trình</div>
+
+<table style="width:100%; border-collapse: collapse; margin-top: 10px; font-size: 14px;">
+        <thead>
+            <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                <th style="padding: 12px; text-align: left; color: #475569;">Tiêu chí</th>
+                <th style="padding: 12px; text-align: left; color: #9a3412;">PA 1: Tối ưu bộ nhớ</th>
+                <th style="padding: 12px; text-align: left; color: #15803d;">PA 2: Tối ưu tốc độ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-weight: bold; color: #64748b;">Cách tiếp cận</td>
+                <td style="padding: 12px;">Duyệt mảng <b>2 lần</b> (Lần 1 đếm, lần 2 in).</td>
+                <td style="padding: 12px;">Duyệt mảng <b>1 lần duy nhất</b>.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfc;">
+                <td style="padding: 12px; font-weight: bold; color: #64748b;">Sử dụng bộ nhớ</td>
+                <td style="padding: 12px; color: #15803d;"><b>Cực thấp:</b> Chỉ dùng mảng A gốc.</td>
+                <td style="padding: 12px; color: #b91c1c;"><b>Cao hơn:</b> Cần mảng phụ lưu vị trí.</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 12px; font-weight: bold; color: #64748b;">Tốc độ (Time)</td>
+                <td style="padding: 12px; color: #b91c1c;">Chậm (tốn $2 \times N$ phép tính).</td>
+                <td style="padding: 12px; color: #15803d;"><b>Rất nhanh</b> (tốn $1 \times N$ phép tính).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e2e8f0; background-color: #fcfcfc;">
+                <td style="padding: 12px; font-weight: bold; color: #64748b;">Độ phức tạp</td>
+                <td style="padding: 12px;">$O(2N)$</td>
+                <td style="padding: 12px;">$O(N)$</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; font-weight: bold; color: #64748b;">Khuyên dùng</td>
+                <td style="padding: 12px;">Khi RAM bị giới hạn ngặt nghèo.</td>
+                <td style="padding: 12px; font-weight: bold; color: #15803d;">Ưu tiên số 1 cho thi HSG.</td>
+            </tr>
+        </tbody>
+    </table>
+
+**Lời khuyên cho cấp THCS:** Trong các kỳ thi học sinh giỏi cấp THCS, bộ nhớ (RAM) thường cho khá thoải mái ($128MB$ - $256MB$), trong khi thời gian thường rất ngặt nghèo ($1.0s$). Do đó **phương án 2 (Tối ưu tốc độ)** luôn được ưu tiên hàng đầu.
 </div>
