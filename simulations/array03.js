@@ -1,3 +1,4 @@
+{
 let arrA = [];
 let currentIdx = -1;
 let isSimulating = false;
@@ -131,4 +132,5 @@ async function startAutoSNT() {
     }
     isSimulating = false;
     document.getElementById('btn-play').innerText = "▶ Chạy tự động";
+}
 }

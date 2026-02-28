@@ -1,3 +1,4 @@
+{
 let arrA = [];
 let currentIdx = -1;
 let isSimulating = false;
@@ -151,4 +152,5 @@ async function startAuto02() {
     }
     isSimulating = false;
     document.getElementById('btn-play').innerText = "▶ Chạy tự động";
+}
 }
