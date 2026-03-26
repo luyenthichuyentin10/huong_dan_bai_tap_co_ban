@@ -221,22 +221,94 @@ pre code.hljs {
 .val-cell { background-color: #fef08a; font-weight: bold; color: #0c4a6e;}
 .idx-row { background: #f1f5f9; font-weight: bold; color: #64748b; }
 
-/* --- MENU & SUBMENU --- */
+/* 1. Danh mục chính (Vd: 1. CẤU TRÚC DỮ LIỆU, 2. KIẾN THỨC TOÁN) */
 .menu-category {
-    padding: 15px 20px; font-size: 0.85rem; text-transform: uppercase;
-    color: #94a3b8; font-weight: bold; background: #1e293b;
-    display: flex; justify-content: space-between; cursor: pointer;
+    padding: 15px 20px; 
+    font-size: 0.85rem; 
+    text-transform: uppercase;
+    color: #94a3b8; 
+    font-weight: bold; 
+    background: #1e293b;
+    display: flex; 
+    justify-content: space-between; 
+    cursor: pointer;
     border-bottom: 1px solid #334155;
+    transition: background 0.3s;
 }
 
-.menu-item {
-    padding: 12px 25px; display: block; color: #e2e8f0;
-    text-decoration: none; font-size: 0.95rem; border-left: 4px solid transparent;
+.menu-category:hover {
+    background: #243146; /* Sáng lên một chút khi hover danh mục lớn */
 }
-.menu-item:hover, .menu-item.active {
-    background: #334155; color: var(--color-accent); border-left: 4px solid var(--color-accent);
+
+/* 2. Menu con cấp 1 (Vd: Array, String, Số học) */
+.menu-item, .menu-item-parent {
+    padding: 12px 25px; 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    color: #e2e8f0;
+    text-decoration: none; 
+    font-size: 0.95rem; 
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
-.submenu.hidden { display: none; }
+
+/* 3. Hiệu ứng Hover và Active chung cho tất cả Menu */
+.menu-item:hover, .menu-item.active, .menu-item-parent:hover {
+    background: #334155; 
+    color: var(--color-accent); 
+    border-left: 4px solid var(--color-accent);
+}
+
+/* 4. Vùng chứa menu con (Submenu) */
+.submenu {
+    background: #0f172a; /* Nền tối đồng bộ với sidebar */
+}
+
+/* Ẩn hiện menu */
+.submenu.hidden { 
+    display: none; 
+}
+
+/* Đảm bảo mục 2.1 Số học có kiểu dáng giống hệt các mục 2.2, 2.3 */
+.menu-item-flat {
+    padding: 12px 25px;
+    display: block;
+    color: #e2e8f0; /* Màu chữ trắng xám chuẩn menu-item */
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Hiệu ứng hover đồng bộ với toàn bộ hệ thống */
+.menu-item-flat:hover, .menu-item-flat.active {
+    background: #334155;
+    color: var(--color-accent);
+    border-left: 4px solid var(--color-accent);
+}
+
+/* Loại bỏ màu nền tối của submenu nếu Thầy muốn nó trông phẳng hoàn toàn */
+.menu-flat-container {
+    background: transparent !important;
+}
+
+/* Menu con cấp 3 (Các bài 2.1.1, 2.1.2...) */
+.submenu-level-3 .menu-item {
+    padding-left: 55px !important; /* Thụt vào sâu hơn các mục 2.2, 2.3 */
+    font-size: 0.85rem; /* Chữ nhỏ hơn một chút để tạo cảm giác phân cấp */
+    background-color: #0f172a; /* Nền tối đồng bộ */
+    border-left: 4px solid transparent;
+}
+
+/* Hiệu ứng hover riêng cho cấp 3 */
+.submenu-level-3 .menu-item:hover {
+    background-color: #1e293b !important;
+    color: var(--color-accent) !important;
+}
+
 
 .math-formula {
     background-color: #f0f9ff; padding: 15px; border-radius: 8px;

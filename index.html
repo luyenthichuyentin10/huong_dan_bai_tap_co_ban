@@ -36,27 +36,47 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="menu-category" onclick="toggleSubmenu('sub1')">1. CẤU TRÚC DỮ LIỆU ARRAY <span>▾</span></div>
-            <div id="sub1" class="submenu">
-                <a href="#" class="menu-item" onclick="loadLesson('array01')">Bài 1: Tính TBC - TBN</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array02')">Bài 2: Tìm MAX - MIN</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array03')">Bài 3: Tìm số nguyên tố</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array04')">Bài 4: Sắp xếp mảng</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array05')">Bài 5: Tìm phần tử</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array06')">Bài 6: Xóa mảng</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array07')">Bài 7: Chèn mảng</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array08')">Bài 8: Chèn phần tử cố định</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array09')">Bài 9: Tìm vị trí khoảng cách</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array10')">Bài 10: Đẳng thức măng</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array11')">Bài 11: Tính chất mảng</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array12')">Bài 12: Tách mảng</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array13')">Bài 13: Gộp mảng</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array14')">Bài 14: Lẻ tăng, chẵn giảm</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array15')">Bài 15: Kiểm tra mảng con</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array16')">Bài 16: Đếm mảng con tăng giảm</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array17')">Bài 17: Số xuất hiện nhiều nhất</a>
-                <a href="#" class="menu-item" onclick="loadLesson('array18')">Bài 18: Tổng mảng con</a>
+            <div id="sub1" class="submenu hidden">
+
+                <!-- Nhóm: Bài tập -->
+                <div class="menu-item-parent" onclick="toggleSubmenu('sub_2_1')" style="border-left: none;"> Bài tập <span style="font-size: 0.7rem;">▾</span></div>
+                <div id="sub_2_1" class="submenu hidden submenu-level-3">
+                    <a href="#" class="menu-item" onclick="loadLesson('array01')">Bài 1: Tính TBC - TBN</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array02')">Bài 2: Tìm MAX - MIN</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array03')">Bài 3: Tìm số nguyên tố</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array04')">Bài 4: Sắp xếp mảng</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array05')">Bài 5: Tìm phần tử</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array06')">Bài 6: Xóa mảng</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array07')">Bài 7: Chèn mảng</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array08')">Bài 8: Chèn phần tử cố định</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array09')">Bài 9: Tìm vị trí khoảng cách</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array10')">Bài 10: Đẳng thức mảng</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array11')">Bài 11: Tính chất mảng</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array12')">Bài 12: Tách mảng</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array13')">Bài 13: Gộp mảng</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array14')">Bài 14: Lẻ tăng, chẵn giảm</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array15')">Bài 15: Kiểm tra mảng con</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array16')">Bài 16: Đếm mảng con tăng giảm</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array17')">Bài 17: Số xuất hiện nhiều nhất</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('array18')">Bài 18: Tổng mảng con</a>
+                </div>
+
+                <!-- Nhóm: Bài kiểm tra -->
+                <div class="menu-item-parent" onclick="toggleSubmenu('sub_2_2')" style="border-left: none;"> Bài kiểm tra <span style="font-size: 0.7rem;">▾</span></div>
+                <div id="sub_2_2" class="submenu hidden submenu-level-3">
+                    <a href="#" class="menu-item" onclick="loadLesson('ktarr01')">Bài 1: Quy hoạch</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('ktarr02')">Bài 2: Số lớn nhất</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('ktarr03')">Bài 3: Số đơn độc</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('ktarr04')">Bài 4: Đá quý</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('ktarr05')">Bài 1: Đăng kiểm</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('ktarr06')">Bài 2: Mật mã lớn nhất</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('ktarr07')">Bài 3: Món hàng độc nhất</a>
+                    <a href="#" class="menu-item" onclick="loadLesson('ktarr08')">Bài 4: Trái cây quý</a>
+                </div>
+
             </div>
         </nav>
+        
 
         <main id="main-content">
             <div id="render-content">
